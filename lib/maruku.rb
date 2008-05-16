@@ -17,6 +17,7 @@
 #   along with Maruku; if not, write to the Free Software
 #   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #++
+$:.unshift File.dirname(__FILE__)
 
 require 'rexml/document'
 
@@ -136,3 +137,5 @@ require 'maruku/output/to_s'
 # class Maruku is the global interface
 require 'maruku/maruku'
 
+# require the new DIV syntax, by default
+require 'maruku/ext/div'
