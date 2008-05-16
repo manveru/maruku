@@ -1,4 +1,3 @@
-
 require 'lib/maruku/version'
 
 $spec = Gem::Specification.new do |s|
@@ -12,7 +11,7 @@ $spec = Gem::Specification.new do |s|
   s.files = Dir['lib/**/*.rb'] + Dir['lib/*.rb'] + 
 	Dir['docs/*.md'] +	Dir['docs/*.html'] +
 	Dir['tests/**/*.md'] +
-          Dir['bin/*'] + Dir['*.sh'] + ['Rakefile', 'maruku_gem.rb']
+          Dir['bin/*'] + Dir['*.sh'] + ['Rakefile']
 
   s.bindir = 'bin'
   s.executables = ['maruku','marutex']
@@ -30,4 +29,3 @@ end
 #  s.has_rdoc = true
 #  s.extra_rdoc_files = Dir['[A-Z]*']
 #  s.rdoc_options << '--title' <<  'Builder -- Easy XML Building'
-
