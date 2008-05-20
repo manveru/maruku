@@ -39,6 +39,7 @@ task :release => [:gem, :package] do
   end
 end
 
+desc "Run unit tests"
 task :test => [:markdown_span_tests, :markdown_block_tests]
 
 task :markdown_block_tests do
@@ -68,6 +69,3 @@ Rake::RDocTask.new do |rdoc|
 	rdoc.rdoc_dir = 'doc' # rdoc output folder
 	rdoc.options << '--line-numbers' << '--inline-source'
 end
-
-
-
