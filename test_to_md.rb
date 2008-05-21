@@ -3,14 +3,15 @@ require 'strscan'
 
 def process(title, mkd)
   doc = Maruku.new(mkd)
-  md = doc.to_md
+  md = doc.to_md(:line_length => 80)
   if md == mkd
-    puts("%-20s passed" % title)
+    puts("%-30s passed" % title)
   else
     puts " #{title} ".center(80, '=')
     p doc
     p mkd
     p md
+    exit
   end
 end
 
@@ -41,13 +42,16 @@ __END__
 #### Header 4
 ##### Header 5
 
-*** Link ***
+*** Link inline ***
 This is [an example](http://example.com/ "Title") inline link.
 
+*** Link without title ***
 [This link](http://example.net/) has no title attribute.
 
+*** Link reference style ***
 This is [an example][id] reference-style link.
 
+*** Link reference definition ***
 [id]: http://example.com/ "Optional Title Here"
 [Google][google]
 
