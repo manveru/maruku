@@ -40,7 +40,6 @@ module MaRuKu::Out::Markdown
 
   def to_md_paragraph(context)
     line_length = context[:line_length] || DefaultLineLength
-    # wrap(@children, line_length, context)+"\n"
     wrap(children_to_md(context), line_length, context) << "\n"
   end
 
@@ -208,6 +207,12 @@ module MaRuKu::Out::Markdown
   def array_to_md(array, context, join_char='')
     array.map{|c|
       m = c.respond_to?(:node_type) ? "to_md_#{c.node_type}" : :to_md
+
+      unless c.respond_to?(m)
+        puts("Missing method %p for %p, using to_md instead" %[m, s])
+        m = :to_md
+      end
+
       h = c.send(m, context)
       raise("%p md after sending %p to %p" % [h,m,c]) if h.nil?
       h
@@ -217,6 +222,9 @@ end
 
 module MaRuKu
   class MDDocument
+    # TODO: Find out if this is simply for backwards compatibility.
+    #       Only explanation i can find is that this used to be without
+    #       parameter.
     def to_md(context = {})
       super
     end
