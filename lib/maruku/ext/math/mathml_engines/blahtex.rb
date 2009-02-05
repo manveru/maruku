@@ -9,6 +9,7 @@ module MaRuKu; module Out; module HTML
 	PNG = Struct.new(:src,:depth,:height)
 	
 	def convert_to_png_blahtex(kind, tex)
+	  puts "Converting `#{tex}` as `#{kind}`"
 		begin
 			FileUtils::mkdir_p MaRuKu::Globals[:html_png_dir]
 
@@ -19,8 +20,15 @@ module MaRuKu; module Out; module HTML
 			if not File.exists?(result_file) 
 				tmp_in = Tempfile.new('maruku_blahtex')
         f = tmp_in.open
-				f.write tex
-				f.close
+        case kind
+        when :inline
+			    f.write tex
+			  when :equation
+			    f.write '\displaystyle ' + tex
+			  else 
+			    puts "Unknown type '#{kind}'"
+			  end
+			  f.close
 
 				resolution = get_setting(:html_png_resolution)
 
