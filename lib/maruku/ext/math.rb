@@ -9,7 +9,7 @@ require 'maruku/ext/math/mathml_engines/none'
 require 'maruku/ext/math/mathml_engines/ritex'
 require 'maruku/ext/math/mathml_engines/itex2mml'
 require 'maruku/ext/math/mathml_engines/blahtex'
-
+require 'maruku/ext/math/mathml_engines/mathtrans'
 
 =begin maruku_doc
 Attribute: math_enabled
