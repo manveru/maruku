@@ -45,7 +45,8 @@ module MaRuKu; module Out; module HTML
     height = height.to_f
     depth = depth.to_f
 
-    return PNG.new(png_file, depth, height - depth)
+    png_url = File.join(MaRuKu::Globals[:html_png_url], md5sum+".png")
+    return PNG.new(png_url, depth, height - depth)
     
     # begin
     #   FileUtils::mkdir_p MaRuKu::Globals[:html_png_dir]
